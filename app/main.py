@@ -39,7 +39,10 @@ def shop_trip() -> None:
 
         for shop in shops:
             cost = customer.calculate_trip(shop, fuel_price)
-            print(f"{customer.name}'s trip to the {shop.name} costs {format_number(cost)}")
+            print(
+                f"{customer.name}'s trip to the {shop.name} "
+                f"costs {format_number(cost)}"
+            )
 
             if cost < min_cost:
                 min_cost = cost
@@ -50,9 +53,13 @@ def shop_trip() -> None:
             cheapest_shop.print_receipt(customer.name, customer.product_cart)
             print(f"\n{customer.name} rides home")
             customer.money -= min_cost
-            print(f"{customer.name} now has {format_number(round(customer.money, 2))} dollars")
+            final_cash = format_number(round(customer.money, 2))
+            print(f"{customer.name} now has {final_cash} dollars")
         else:
-            print(f"{customer.name} doesn't have enough money to make a purchase in any shop")
+            print(
+                f"{customer.name} doesn't have enough money to "
+                "make a purchase in any shop"
+            )
 
         if i < len(customers) - 1:
             print()
